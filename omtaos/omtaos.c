@@ -1,27 +1,6 @@
 /* omtaos.c
- * This is the implementation of the build-in output module for MySQL.
- *
- * NOTE: read comments in module-template.h to understand how this file
- *       works!
- *
- * File begun on 2007-07-20 by RGerhards (extracted from syslogd.c)
- *
- * Copyright 2007-2014 Adiscon GmbH.
- *
- * This file is part of rsyslog.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *       http://www.apache.org/licenses/LICENSE-2.0
- *       -or-
- *       see COPYING.ASL20 in the source distribution
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * copy and modify ommysql file
+ * insert data into tdengine
  */
 #include "config.h"
 #include "rsyslog.h"
@@ -482,14 +461,14 @@ static rsRetVal writetaos(wrkrInstanceData_t *pWrkrData, char *psz)
             errmsg.LogError(0, NO_ERRCODE, "%s:insert error err=%s no=%d sql=%s",
                     __FUNCTION__, taos_errstr(pWrkrData->htaos), taos_errno(tret), sql_mem);
             /* error occured, try to re-init connection and retry */
-            closetaos(pWrkrData); /* close the current handle */
-            CHKiRet(inittaos(pWrkrData, 0)); /* try to re-open */
-            if(taos_query(pWrkrData->htaos, (char*)sql_mem)) { /* re-try insert */
-                /* we failed, giving up for now */
-                reportDBError(pWrkrData, 0);
-                closetaos(pWrkrData); /* free ressources */
-                ABORT_FINALIZE(RS_RET_SUSPENDED);
-            }
+//            closetaos(pWrkrData); /* close the current handle */
+//            CHKiRet(inittaos(pWrkrData, 0)); /* try to re-open */
+//            if(taos_query(pWrkrData->htaos, (char*)sql_mem)) { /* re-try insert */
+//                /* we failed, giving up for now */
+//                reportDBError(pWrkrData, 0);
+//                closetaos(pWrkrData); /* free ressources */
+//                ABORT_FINALIZE(RS_RET_SUSPENDED);
+//            }
         }else {
             dbgprintf("%s: err=%s no=%d\n", __FUNCTION__,
                     taos_errstr(pWrkrData->htaos), taos_errno(tret));
