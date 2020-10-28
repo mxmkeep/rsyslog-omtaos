@@ -62,15 +62,19 @@ echo "    hiredis support enabled:                  $enable_omhiredis"
 ```
 
 5. 安装编译环境
+```
 yum install git valgrind autoconf automake flex bison python-docutils python-sphinx json-c-devel libuuid-devel libgcrypt-devel zlib-devel openssl-devel libcurl-devel gnutls-devel mysql-devel postgresql-devel libdbi-dbd-mysql libdbi-devel net-snmp-devel libestr-devel.x86_64 autoconf automake libtool -y
+```
 再安装   pkg-config-0.29.tar.gz
 
 6. 重新生成configure文件
 使用autogen.sh重新生成configure文件
 
 7. configure
+```
 ./configure --prefix=/usr/local/rsyslog-824 --enable-imptcp --enable-omuxsock --enable-omstdout --enable-taos
 make install -j 4
+```
 
 # rsyslog configure
 1. 在消息模板里，消息数据和SQL的分隔符为 *:*: 4个字符 (随意规定的，不喜欢可以自己修改源码)
