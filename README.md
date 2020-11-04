@@ -112,3 +112,6 @@ ruleset(name="TDengine"){
 在4核8线程+8G环境下压测，入库速率为4万QPS左右
 目前在生产环境1万QPS入库速率下基本正常
 本代码为单条消息insert入库，还想再提升性能，可以修改为批量入库
+
+rsyslog-824.0.tar.gz是用如下命令编译的
+```./configure --prefix=/usr/local/rsyslog-824 --enable-imptcp --enable-mysql --enable-omuxsock --enable-omstdout --enable-taos```
